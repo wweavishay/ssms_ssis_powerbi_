@@ -1,0 +1,1210 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/18/2024 4:47:20 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-4VV2GQ3"
+  DTS:CreatorName="DESKTOP-4VV2GQ3\מיכאל"
+  DTS:DelayValidation="True"
+  DTS:DTSID="{468A1B40-FDE0-4B6A-97B3-0A9A842212F3}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5270.0"
+  DTS:LocaleID="1037"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="60"
+  DTS:VersionGUID="{9E5D4B22-650B-4E73-BB10-2FE09D4E5E78}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{077BAC54-6644-4871-9995-A6DE654ABB29}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\מיכאל\Desktop\ssmsssispowerbi\databases\productdata.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.AvishayDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{96895930-4F91-485B-8FFD-17AC0B9BD1D7}"
+      DTS:ObjectName="LocalHost.AvishayDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=AvishayDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{96895930-4F91-485B-8FFD-17AC0B9BD1D7}LocalHost.AvishayDB;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PRODUCT CSV]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{7C606DF6-E47B-4C91-9478-AF8161E0A9CB}"
+      DTS:ObjectName="PRODUCT CSV">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::filespath]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1037"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1255"
+          DTS:ConnectionString="C:\Users\מיכאל\Desktop\ssmsssispowerbi\databases\product.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ProductName"
+              DTS:DTSID="{461DCF90-113C-4D9C-A0DC-B2C979826BCB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ProductPrice"
+              DTS:DTSID="{E315645B-B6E5-47BF-84C2-3BDCABB2F19C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ProductID"
+              DTS:DTSID="{36A5F0E5-3D60-4C9F-B29D-B6F48EEFCEA0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CategoryID"
+              DTS:DTSID="{B0A1BAF2-63F3-49D5-A280-AD80DB500576}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="VendorId"
+              DTS:DTSID="{8E9E2592-8FC7-4B04-B5B2-2E0EFA8787B7}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8824DB46-F933-4B6D-8063-F6B29929AE74}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="filepath">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\מיכאל\Desktop\ssmsssispowerbi\databases\products.csv</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6522659A-9F88-43F1-BB20-11E1496E1FBB}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="filespath">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\מיכאל\Desktop\ssmsssispowerbi\databases\product.csv</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{70632237-E674-4BE7-BD61-E6AC56C7E881}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="filespath123">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{23D7F150-CCBF-423D-BB70-243C81BF7D09}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="recordsloaded">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Foreach Loop Container of files"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{C7C4E058-0051-472A-8C79-1DF7947D0306}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach Loop Container of files">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{3D46C2AA-E07F-4246-BAE4-6403AB1F19D3}"
+        DTS:ObjectName="{3D46C2AA-E07F-4246-BAE4-6403AB1F19D3}">
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="C:\Users\מיכאל\Desktop\ssmsssispowerbi\databases" />
+            <FEFEProperty
+              FileSpec="*.*csv" />
+            <FEFEProperty
+              FileNameRetrievalType="0" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container of files\insert Logs"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{B432BBA8-6404-4260-92B6-FC1C4413527F}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="insert Logs"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="SqlStatementSource">"INSERT INTO LogTable (status, file_name, records_insert, log_date) 
+VALUES ('File loaded', '" + @[User::filespath] + "', " + (DT_WSTR, 50)@[User::recordsloaded] + ", GETDATE());"</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{96895930-4F91-485B-8FFD-17AC0B9BD1D7}"
+              SQLTask:SqlStatementSource="INSERT INTO LogTable (status, file_name, records_insert, log_date) &#xA;VALUES ('File loaded', 'C:\Users\מיכאל\Desktop\ssmsssispowerbi\databases\product.csv', 0, GETDATE());" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container of files\Products EXCEL TO DB"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{55A5ED0A-FB13-47E0-94E6-980E06B07AB2}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Products EXCEL TO DB"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:EventHandlers>
+            <DTS:EventHandler
+              DTS:refId="Package\Foreach Loop Container of files\Products EXCEL TO DB.EventHandlers[OnError]"
+              DTS:CreationName="OnError"
+              DTS:DTSID="{954828F3-17DA-45DD-BF95-F39B1967435E}"
+              DTS:EventID="1917709884"
+              DTS:EventName="OnError"
+              DTS:LocaleID="-1">
+              <DTS:Variables>
+                <DTS:Variable
+                  DTS:CreationName=""
+                  DTS:Description="The propagate property of the event"
+                  DTS:DTSID="{20657F35-D344-47AB-AB3F-8CBE67EDD351}"
+                  DTS:IncludeInDebugDump="6789"
+                  DTS:Namespace="System"
+                  DTS:ObjectName="Propagate">
+                  <DTS:VariableValue
+                    DTS:DataType="11">-1</DTS:VariableValue>
+                </DTS:Variable>
+              </DTS:Variables>
+              <DTS:Executables />
+            </DTS:EventHandler>
+          </DTS:EventHandlers>
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="1037"
+                  name="EXTRACT CSV"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[PRODUCT CSV]"
+                      connectionManagerRefId="Package.ConnectionManagers[PRODUCT CSV]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output].Columns[ProductName]"
+                          codePage="1255"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output].ExternalColumns[ProductName]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output].Columns[ProductName]"
+                          name="ProductName"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output].Columns[ProductPrice]"
+                          codePage="1255"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output].ExternalColumns[ProductPrice]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output].Columns[ProductPrice]"
+                          name="ProductPrice"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output].Columns[ProductID]"
+                          codePage="1255"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output].ExternalColumns[ProductID]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output].Columns[ProductID]"
+                          name="ProductID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output].Columns[CategoryID]"
+                          codePage="1255"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output].ExternalColumns[CategoryID]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output].Columns[CategoryID]"
+                          name="CategoryID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output].Columns[VendorId]"
+                          codePage="1255"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output].ExternalColumns[VendorId]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output].Columns[VendorId]"
+                          name="VendorId"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output].ExternalColumns[ProductName]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          name="ProductName" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output].ExternalColumns[ProductPrice]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          name="ProductPrice" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output].ExternalColumns[ProductID]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          name="ProductID" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output].ExternalColumns[CategoryID]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          name="CategoryID" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output].ExternalColumns[VendorId]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          name="VendorId" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="1255"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\LOAD new products"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="LOAD new products"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Products]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\LOAD new products.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.AvishayDB]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.AvishayDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\LOAD new products.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\LOAD new products.Inputs[OLE DB Destination Input].Columns[ProductPrice]"
+                          cachedCodepage="1255"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ProductPrice"
+                          externalMetadataColumnId="Package\Foreach Loop Container of files\Products EXCEL TO DB\LOAD new products.Inputs[OLE DB Destination Input].ExternalColumns[ProductPrice]"
+                          lineageId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output].Columns[ProductPrice]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\LOAD new products.Inputs[OLE DB Destination Input].Columns[[ProductName]]"
+                          cachedDataType="wstr"
+                          cachedLength="30"
+                          cachedName="[ProductName]"
+                          externalMetadataColumnId="Package\Foreach Loop Container of files\Products EXCEL TO DB\LOAD new products.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                          lineageId="Package\Foreach Loop Container of files\Products EXCEL TO DB\TRANFORAMTION CLOUMS.Outputs[Derived Column Output].Columns[[ProductName]]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\LOAD new products.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                          cachedCodepage="1255"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ProductID"
+                          externalMetadataColumnId="Package\Foreach Loop Container of files\Products EXCEL TO DB\LOAD new products.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                          lineageId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output].Columns[ProductID]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\LOAD new products.Inputs[OLE DB Destination Input].Columns[[CategoryID]]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="[CategoryID]"
+                          externalMetadataColumnId="Package\Foreach Loop Container of files\Products EXCEL TO DB\LOAD new products.Inputs[OLE DB Destination Input].ExternalColumns[CategoryID]"
+                          lineageId="Package\Foreach Loop Container of files\Products EXCEL TO DB\TRANFORAMTION CLOUMS.Outputs[Derived Column Output].Columns[[CategoryID]]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\LOAD new products.Inputs[OLE DB Destination Input].Columns[[VendorId]]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="[VendorId]"
+                          externalMetadataColumnId="Package\Foreach Loop Container of files\Products EXCEL TO DB\LOAD new products.Inputs[OLE DB Destination Input].ExternalColumns[VendorId]"
+                          lineageId="Package\Foreach Loop Container of files\Products EXCEL TO DB\TRANFORAMTION CLOUMS.Outputs[Derived Column Output].Columns[[VendorId]]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\LOAD new products.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                          codePage="1255"
+                          dataType="str"
+                          length="50"
+                          name="ProductID" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\LOAD new products.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                          dataType="wstr"
+                          length="30"
+                          name="ProductName" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\LOAD new products.Inputs[OLE DB Destination Input].ExternalColumns[ProductPrice]"
+                          dataType="i4"
+                          name="ProductPrice" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\LOAD new products.Inputs[OLE DB Destination Input].ExternalColumns[VendorId]"
+                          dataType="wstr"
+                          length="10"
+                          name="VendorId" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\LOAD new products.Inputs[OLE DB Destination Input].ExternalColumns[CategoryID]"
+                          dataType="wstr"
+                          length="10"
+                          name="CategoryID" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\LOAD new products.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Foreach Loop Container of files\Products EXCEL TO DB\LOAD new products.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\LOAD new products.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container of files\Products EXCEL TO DB\LOAD new products.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\LOAD new products.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container of files\Products EXCEL TO DB\LOAD new products.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\Lookup"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="Lookup"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Products]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Products]) [refTable]
+where [refTable].[ProductID] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ProductID" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1255"/&gt;&lt;referenceColumn name="ProductName" dataType="DT_WSTR" length="30" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ProductPrice" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="VendorId" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CategoryID" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output].Columns[ProductID]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\Lookup.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.AvishayDB]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.AvishayDB]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\Lookup.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\Lookup.Inputs[Lookup Input].Columns[ProductID]"
+                          cachedCodepage="1255"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ProductID"
+                          lineageId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output].Columns[ProductID]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">ProductID</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\Lookup.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\Foreach Loop Container of files\Products EXCEL TO DB\Lookup.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\Lookup.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\Foreach Loop Container of files\Products EXCEL TO DB\Lookup.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\Lookup.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\Foreach Loop Container of files\Products EXCEL TO DB\Lookup.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container of files\Products EXCEL TO DB\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container of files\Products EXCEL TO DB\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\Row Count"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="Row Count">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::recordsloaded</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\Row Count.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\Row Count.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\Foreach Loop Container of files\Products EXCEL TO DB\Row Count.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\TRANFORAMTION CLOUMS"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="TRANFORAMTION CLOUMS"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\TRANFORAMTION CLOUMS.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\TRANFORAMTION CLOUMS.Inputs[Derived Column Input].Columns[ProductName]"
+                          cachedCodepage="1255"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ProductName"
+                          lineageId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output].Columns[ProductName]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\TRANFORAMTION CLOUMS.Inputs[Derived Column Input].Columns[CategoryID]"
+                          cachedCodepage="1255"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="CategoryID"
+                          lineageId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output].Columns[CategoryID]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\TRANFORAMTION CLOUMS.Inputs[Derived Column Input].Columns[VendorId]"
+                          cachedCodepage="1255"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="VendorId"
+                          lineageId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output].Columns[VendorId]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\TRANFORAMTION CLOUMS.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Foreach Loop Container of files\Products EXCEL TO DB\TRANFORAMTION CLOUMS.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\TRANFORAMTION CLOUMS.Outputs[Derived Column Output].Columns[[CategoryID]]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="10"
+                          lineageId="Package\Foreach Loop Container of files\Products EXCEL TO DB\TRANFORAMTION CLOUMS.Outputs[Derived Column Output].Columns[[CategoryID]]"
+                          name="[CategoryID]"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,10)#{Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output].Columns[CategoryID]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,10)CategoryID</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\TRANFORAMTION CLOUMS.Outputs[Derived Column Output].Columns[[ProductName]]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="30"
+                          lineageId="Package\Foreach Loop Container of files\Products EXCEL TO DB\TRANFORAMTION CLOUMS.Outputs[Derived Column Output].Columns[[ProductName]]"
+                          name="[ProductName]"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,30)#{Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output].Columns[ProductName]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,30)ProductName</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\TRANFORAMTION CLOUMS.Outputs[Derived Column Output].Columns[[VendorId]]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="10"
+                          lineageId="Package\Foreach Loop Container of files\Products EXCEL TO DB\TRANFORAMTION CLOUMS.Outputs[Derived Column Output].Columns[[VendorId]]"
+                          name="[VendorId]"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,10)#{Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output].Columns[VendorId]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,10)VendorId</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\TRANFORAMTION CLOUMS.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Foreach Loop Container of files\Products EXCEL TO DB\TRANFORAMTION CLOUMS.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\TRANFORAMTION CLOUMS.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container of files\Products EXCEL TO DB\TRANFORAMTION CLOUMS.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container of files\Products EXCEL TO DB\TRANFORAMTION CLOUMS.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container of files\Products EXCEL TO DB\TRANFORAMTION CLOUMS.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Foreach Loop Container of files\Products EXCEL TO DB.Paths[Derived Column Output]"
+                  endId="Package\Foreach Loop Container of files\Products EXCEL TO DB\Lookup.Inputs[Lookup Input]"
+                  name="Derived Column Output"
+                  startId="Package\Foreach Loop Container of files\Products EXCEL TO DB\TRANFORAMTION CLOUMS.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Foreach Loop Container of files\Products EXCEL TO DB.Paths[Flat File Source Output]"
+                  endId="Package\Foreach Loop Container of files\Products EXCEL TO DB\TRANFORAMTION CLOUMS.Inputs[Derived Column Input]"
+                  name="Flat File Source Output"
+                  startId="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV.Outputs[Flat File Source Output]" />
+                <path
+                  refId="Package\Foreach Loop Container of files\Products EXCEL TO DB.Paths[Lookup No Match Output]"
+                  endId="Package\Foreach Loop Container of files\Products EXCEL TO DB\Row Count.Inputs[Row Count Input 1]"
+                  name="Lookup No Match Output"
+                  startId="Package\Foreach Loop Container of files\Products EXCEL TO DB\Lookup.Outputs[Lookup No Match Output]" />
+                <path
+                  refId="Package\Foreach Loop Container of files\Products EXCEL TO DB.Paths[Row Count Output 1]"
+                  endId="Package\Foreach Loop Container of files\Products EXCEL TO DB\LOAD new products.Inputs[OLE DB Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\Foreach Loop Container of files\Products EXCEL TO DB\Row Count.Outputs[Row Count Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container of files.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{2CE4456A-62F4-4B8B-83F3-4E26ABB06823}"
+          DTS:From="Package\Foreach Loop Container of files\Products EXCEL TO DB"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Foreach Loop Container of files\insert Logs" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{3B2AAD7C-AC8E-4F44-8B5B-FB6C1E0643AA}"
+          DTS:ObjectName="{3B2AAD7C-AC8E-4F44-8B5B-FB6C1E0643AA}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::filespath" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="131.333333333334,42.6666666666667"
+          Id="Package\Foreach Loop Container of files\insert Logs"
+          TopLeft="65.7499971129,110.583332810302" />
+        <NodeLayout
+          Size="188,42.6666666666667"
+          Id="Package\Foreach Loop Container of files\Products EXCEL TO DB"
+          TopLeft="46.1249993946403,16.3333303113778" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container of files.PrecedenceConstraints[Constraint]"
+          TopLeft="140.12499939464,58.9999969780445">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-8.70833561507359,51.5833358322578"
+              Start="0,0"
+              End="-8.70833561507359,44.0833358322578">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.7916679161289" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.7916679161289"
+                    Point2="0,25.7916679161289"
+                    Point3="-4,25.7916679161289" />
+                  <mssgle:LineSegment
+                    End="-4.70833561507359,25.7916679161289" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4.70833561507359,25.7916679161289"
+                    Point2="-8.70833561507359,25.7916679161289"
+                    Point3="-8.70833561507359,29.7916679161289" />
+                  <mssgle:LineSegment
+                    End="-8.70833561507359,44.0833358322578" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="260,181.333333333334"
+          Size="260,224"
+          Id="Package\Foreach Loop Container of files"
+          TopLeft="128.124998090789,62.3999988842011" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Foreach Loop Container of files\Products EXCEL TO DB">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="113.333333333334,42.6666666666667"
+          Id="Package\Foreach Loop Container of files\Products EXCEL TO DB\Lookup"
+          TopLeft="622,166" />
+        <NodeLayout
+          Size="209.333333333334,42.6666666666667"
+          Id="Package\Foreach Loop Container of files\Products EXCEL TO DB\TRANFORAMTION CLOUMS"
+          TopLeft="356,168" />
+        <NodeLayout
+          Size="173.333333333334,42.6666666666667"
+          Id="Package\Foreach Loop Container of files\Products EXCEL TO DB\LOAD new products"
+          TopLeft="837,166" />
+        <NodeLayout
+          Size="145.333333333334,42.6666666666667"
+          Id="Package\Foreach Loop Container of files\Products EXCEL TO DB\EXTRACT CSV"
+          TopLeft="110.624999990687,167" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container of files\Products EXCEL TO DB.Paths[Flat File Source Output]"
+          TopLeft="255.95833332402,188.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="100.04166667598,0"
+              Start="0,0"
+              End="92.5416666759799,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="92.5416666759799,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container of files\Products EXCEL TO DB.Paths[Derived Column Output]"
+          TopLeft="565.333333333333,188.333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="56.6666666666666,0"
+              Start="0,0"
+              End="49.1666666666666,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="49.1666666666666,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="131.333333333334,42.6666666666667"
+          Id="Package\Foreach Loop Container of files\Products EXCEL TO DB\Row Count"
+          TopLeft="755.708322688316,240.499995699525" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container of files\Products EXCEL TO DB.Paths[Lookup No Match Output]"
+          TopLeft="678.666666666667,208.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="142.708322688316,31.8333290328582"
+              Start="0,0"
+              End="142.708322688316,24.3333290328582">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.9166645164291" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.9166645164291"
+                    Point2="0,15.9166645164291"
+                    Point3="4,15.9166645164291" />
+                  <mssgle:LineSegment
+                    End="138.708322688316,15.9166645164291" />
+                  <mssgle:CubicBezierSegment
+                    Point1="138.708322688316,15.9166645164291"
+                    Point2="142.708322688316,15.9166645164291"
+                    Point3="142.708322688316,19.9166645164291" />
+                  <mssgle:LineSegment
+                    End="142.708322688316,24.3333290328582" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="15.5477746254081,20.9166645164291,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container of files\Products EXCEL TO DB.Paths[Row Count Output 1]"
+          TopLeft="841.930544910538,240.499995699525">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="81.7361217561282,-31.8333290328582"
+              Start="0,0"
+              End="81.7361217561282,-24.3333290328582">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-8.96322125109372" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-8.96322125109372"
+                    Point2="0,-12.9632212510937"
+                    Point3="4,-12.9632212510937" />
+                  <mssgle:LineSegment
+                    End="77.7361217561282,-12.9632212510937" />
+                  <mssgle:CubicBezierSegment
+                    Point1="77.7361217561282,-12.9632212510937"
+                    Point2="81.7361217561282,-12.9632212510937"
+                    Point3="81.7361217561282,-16.9632212510937" />
+                  <mssgle:LineSegment
+                    End="81.7361217561282,-24.3333290328582" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container of files\Products EXCEL TO DB\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Products]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container of files\Products EXCEL TO DB\LOAD new products">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,3197 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/18/2024 12:25:03 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-4VV2GQ3"
+  DTS:CreatorName="DESKTOP-4VV2GQ3\מיכאל"
+  DTS:DTSID="{6D1D0315-0FFC-42A4-8F17-EA6C6A21D7A8}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5270.0"
+  DTS:LocaleID="1037"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{7BAC2461-EC65-405E-8998-28E705BAE75C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.AvishayDB_DWH]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{AB786D82-064C-4DC4-B957-C62767E38C8C}"
+      DTS:ObjectName="LocalHost.AvishayDB_DWH">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=AvishayDB_DWH;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{AB786D82-064C-4DC4-B957-C62767E38C8C}LocalHost.AvishayDB_DWH;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.AvishayDB_DWH_backup]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C7683500-3290-4443-9543-0201DFC4A807}"
+      DTS:ObjectName="LocalHost.AvishayDB_DWH_backup">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=AvishayDB_DWH_backup;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{C7683500-3290-4443-9543-0201DFC4A807}LocalHost.AvishayDB_DWH_backup;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F34E5098-039D-48A0-9664-52DF49617F36}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="countrowscande">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\calender dim backup"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{64DC7512-2707-4FFE-A398-CFD73A6DCC02}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="calender dim backup"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\calender dim backup\calender"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="calender"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Calendar_dim]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1255</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\calender dim backup\calender.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.AvishayDB_DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.AvishayDB_DWH]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\calender dim backup\calender.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].Columns[CalendarKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].ExternalColumns[CalendarKey]"
+                      lineageId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].Columns[CalendarKey]"
+                      name="CalendarKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].Columns[FullDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].ExternalColumns[FullDate]"
+                      lineageId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].Columns[FullDate]"
+                      name="FullDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].Columns[DayOfWeek]"
+                      codePage="1255"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].ExternalColumns[DayOfWeek]"
+                      length="50"
+                      lineageId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].Columns[DayOfWeek]"
+                      name="DayOfWeek"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].Columns[DayOfMonth]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].ExternalColumns[DayOfMonth]"
+                      lineageId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].Columns[DayOfMonth]"
+                      name="DayOfMonth"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].Columns[Month]"
+                      codePage="1255"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].ExternalColumns[Month]"
+                      length="50"
+                      lineageId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].Columns[Month]"
+                      name="Month"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].Columns[Quarter]"
+                      codePage="1255"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].ExternalColumns[Quarter]"
+                      length="50"
+                      lineageId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].Columns[Quarter]"
+                      name="Quarter"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].Columns[Year]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].ExternalColumns[Year]"
+                      lineageId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].Columns[Year]"
+                      name="Year"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].ExternalColumns[CalendarKey]"
+                      dataType="i4"
+                      name="CalendarKey" />
+                    <externalMetadataColumn
+                      refId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].ExternalColumns[FullDate]"
+                      dataType="dbDate"
+                      name="FullDate" />
+                    <externalMetadataColumn
+                      refId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].ExternalColumns[DayOfWeek]"
+                      codePage="1255"
+                      dataType="str"
+                      length="50"
+                      name="DayOfWeek" />
+                    <externalMetadataColumn
+                      refId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].ExternalColumns[DayOfMonth]"
+                      dataType="i4"
+                      name="DayOfMonth" />
+                    <externalMetadataColumn
+                      refId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].ExternalColumns[Month]"
+                      codePage="1255"
+                      dataType="str"
+                      length="50"
+                      name="Month" />
+                    <externalMetadataColumn
+                      refId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].ExternalColumns[Quarter]"
+                      codePage="1255"
+                      dataType="str"
+                      length="50"
+                      name="Quarter" />
+                    <externalMetadataColumn
+                      refId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].ExternalColumns[Year]"
+                      dataType="i4"
+                      name="Year" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\calender dim backup\calender.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\calender dim backup\calender.Outputs[OLE DB Source Error Output].Columns[CalendarKey]"
+                      dataType="i4"
+                      lineageId="Package\calender dim backup\calender.Outputs[OLE DB Source Error Output].Columns[CalendarKey]"
+                      name="CalendarKey" />
+                    <outputColumn
+                      refId="Package\calender dim backup\calender.Outputs[OLE DB Source Error Output].Columns[FullDate]"
+                      dataType="dbDate"
+                      lineageId="Package\calender dim backup\calender.Outputs[OLE DB Source Error Output].Columns[FullDate]"
+                      name="FullDate" />
+                    <outputColumn
+                      refId="Package\calender dim backup\calender.Outputs[OLE DB Source Error Output].Columns[DayOfWeek]"
+                      codePage="1255"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\calender dim backup\calender.Outputs[OLE DB Source Error Output].Columns[DayOfWeek]"
+                      name="DayOfWeek" />
+                    <outputColumn
+                      refId="Package\calender dim backup\calender.Outputs[OLE DB Source Error Output].Columns[DayOfMonth]"
+                      dataType="i4"
+                      lineageId="Package\calender dim backup\calender.Outputs[OLE DB Source Error Output].Columns[DayOfMonth]"
+                      name="DayOfMonth" />
+                    <outputColumn
+                      refId="Package\calender dim backup\calender.Outputs[OLE DB Source Error Output].Columns[Month]"
+                      codePage="1255"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\calender dim backup\calender.Outputs[OLE DB Source Error Output].Columns[Month]"
+                      name="Month" />
+                    <outputColumn
+                      refId="Package\calender dim backup\calender.Outputs[OLE DB Source Error Output].Columns[Quarter]"
+                      codePage="1255"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\calender dim backup\calender.Outputs[OLE DB Source Error Output].Columns[Quarter]"
+                      name="Quarter" />
+                    <outputColumn
+                      refId="Package\calender dim backup\calender.Outputs[OLE DB Source Error Output].Columns[Year]"
+                      dataType="i4"
+                      lineageId="Package\calender dim backup\calender.Outputs[OLE DB Source Error Output].Columns[Year]"
+                      name="Year" />
+                    <outputColumn
+                      refId="Package\calender dim backup\calender.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\calender dim backup\calender.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\calender dim backup\calender.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\calender dim backup\calender.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\calender dim backup\calender dim"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="calender dim"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Calendar_dim]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1255</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\calender dim backup\calender dim.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.AvishayDB_DWH_backup]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.AvishayDB_DWH_backup]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\calender dim backup\calender dim.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\calender dim backup\calender dim.Inputs[OLE DB Destination Input].Columns[CalendarKey]"
+                      cachedDataType="i4"
+                      cachedName="CalendarKey"
+                      externalMetadataColumnId="Package\calender dim backup\calender dim.Inputs[OLE DB Destination Input].ExternalColumns[CalendarKey]"
+                      lineageId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].Columns[CalendarKey]" />
+                    <inputColumn
+                      refId="Package\calender dim backup\calender dim.Inputs[OLE DB Destination Input].Columns[FullDate]"
+                      cachedDataType="dbDate"
+                      cachedName="FullDate"
+                      externalMetadataColumnId="Package\calender dim backup\calender dim.Inputs[OLE DB Destination Input].ExternalColumns[FullDate]"
+                      lineageId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].Columns[FullDate]" />
+                    <inputColumn
+                      refId="Package\calender dim backup\calender dim.Inputs[OLE DB Destination Input].Columns[DayOfWeek]"
+                      cachedCodepage="1255"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DayOfWeek"
+                      externalMetadataColumnId="Package\calender dim backup\calender dim.Inputs[OLE DB Destination Input].ExternalColumns[DayOfWeek]"
+                      lineageId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].Columns[DayOfWeek]" />
+                    <inputColumn
+                      refId="Package\calender dim backup\calender dim.Inputs[OLE DB Destination Input].Columns[DayOfMonth]"
+                      cachedDataType="i4"
+                      cachedName="DayOfMonth"
+                      externalMetadataColumnId="Package\calender dim backup\calender dim.Inputs[OLE DB Destination Input].ExternalColumns[DayOfMonth]"
+                      lineageId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].Columns[DayOfMonth]" />
+                    <inputColumn
+                      refId="Package\calender dim backup\calender dim.Inputs[OLE DB Destination Input].Columns[Month]"
+                      cachedCodepage="1255"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Month"
+                      externalMetadataColumnId="Package\calender dim backup\calender dim.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
+                      lineageId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].Columns[Month]" />
+                    <inputColumn
+                      refId="Package\calender dim backup\calender dim.Inputs[OLE DB Destination Input].Columns[Quarter]"
+                      cachedCodepage="1255"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Quarter"
+                      externalMetadataColumnId="Package\calender dim backup\calender dim.Inputs[OLE DB Destination Input].ExternalColumns[Quarter]"
+                      lineageId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].Columns[Quarter]" />
+                    <inputColumn
+                      refId="Package\calender dim backup\calender dim.Inputs[OLE DB Destination Input].Columns[Year]"
+                      cachedDataType="i4"
+                      cachedName="Year"
+                      externalMetadataColumnId="Package\calender dim backup\calender dim.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      lineageId="Package\calender dim backup\calender.Outputs[OLE DB Source Output].Columns[Year]" />
+                    <inputColumn
+                      refId="Package\calender dim backup\calender dim.Inputs[OLE DB Destination Input].Columns[packagename]"
+                      cachedDataType="wstr"
+                      cachedLength="27"
+                      cachedName="packagename"
+                      externalMetadataColumnId="Package\calender dim backup\calender dim.Inputs[OLE DB Destination Input].ExternalColumns[packagename]"
+                      lineageId="Package\calender dim backup\Derived Column 1.Outputs[Derived Column Output].Columns[packagename]" />
+                    <inputColumn
+                      refId="Package\calender dim backup\calender dim.Inputs[OLE DB Destination Input].Columns[time]"
+                      cachedDataType="date"
+                      cachedName="time"
+                      externalMetadataColumnId="Package\calender dim backup\calender dim.Inputs[OLE DB Destination Input].ExternalColumns[time]"
+                      lineageId="Package\calender dim backup\Derived Column 1.Outputs[Derived Column Output].Columns[time]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\calender dim backup\calender dim.Inputs[OLE DB Destination Input].ExternalColumns[CalendarKey]"
+                      dataType="i4"
+                      name="CalendarKey" />
+                    <externalMetadataColumn
+                      refId="Package\calender dim backup\calender dim.Inputs[OLE DB Destination Input].ExternalColumns[FullDate]"
+                      dataType="dbDate"
+                      name="FullDate" />
+                    <externalMetadataColumn
+                      refId="Package\calender dim backup\calender dim.Inputs[OLE DB Destination Input].ExternalColumns[DayOfWeek]"
+                      codePage="1255"
+                      dataType="str"
+                      length="50"
+                      name="DayOfWeek" />
+                    <externalMetadataColumn
+                      refId="Package\calender dim backup\calender dim.Inputs[OLE DB Destination Input].ExternalColumns[DayOfMonth]"
+                      dataType="i4"
+                      name="DayOfMonth" />
+                    <externalMetadataColumn
+                      refId="Package\calender dim backup\calender dim.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
+                      codePage="1255"
+                      dataType="str"
+                      length="50"
+                      name="Month" />
+                    <externalMetadataColumn
+                      refId="Package\calender dim backup\calender dim.Inputs[OLE DB Destination Input].ExternalColumns[Quarter]"
+                      codePage="1255"
+                      dataType="str"
+                      length="50"
+                      name="Quarter" />
+                    <externalMetadataColumn
+                      refId="Package\calender dim backup\calender dim.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      dataType="i4"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\calender dim backup\calender dim.Inputs[OLE DB Destination Input].ExternalColumns[packagename]"
+                      dataType="wstr"
+                      length="50"
+                      name="packagename" />
+                    <externalMetadataColumn
+                      refId="Package\calender dim backup\calender dim.Inputs[OLE DB Destination Input].ExternalColumns[time]"
+                      dataType="dbTimeStamp"
+                      name="time" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\calender dim backup\calender dim.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\calender dim backup\calender dim.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\calender dim backup\calender dim.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\calender dim backup\calender dim.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\calender dim backup\calender dim.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\calender dim backup\calender dim.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\calender dim backup\Derived Column 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\calender dim backup\Derived Column 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\calender dim backup\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\calender dim backup\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\calender dim backup\Derived Column 1.Outputs[Derived Column Output].Columns[packagename]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="27"
+                      lineageId="Package\calender dim backup\Derived Column 1.Outputs[Derived Column Output].Columns[packagename]"
+                      name="packagename"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[System::PackageName] + @[System::TaskName]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[System::PackageName] + @[System::TaskName]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\calender dim backup\Derived Column 1.Outputs[Derived Column Output].Columns[time]"
+                      dataType="date"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\calender dim backup\Derived Column 1.Outputs[Derived Column Output].Columns[time]"
+                      name="time"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[System::StartTime]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[System::StartTime]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\calender dim backup\Derived Column 1.Outputs[Derived Column Output].Columns[count1]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\calender dim backup\Derived Column 1.Outputs[Derived Column Output].Columns[count1]"
+                      name="count1"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,50,1252)@[User::countrowscande]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,50,1252)@[User::countrowscande]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\calender dim backup\Derived Column 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\calender dim backup\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\calender dim backup\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\calender dim backup\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\calender dim backup\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\calender dim backup\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\calender dim backup.Paths[Derived Column Output]"
+              endId="Package\calender dim backup\calender dim.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\calender dim backup\Derived Column 1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\calender dim backup.Paths[OLE DB Source Output]"
+              endId="Package\calender dim backup\Derived Column 1.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\calender dim backup\calender.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Customer_Dim backup"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{C004B35A-1A17-48FF-97D0-72CCD7193AD3}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Customer_Dim backup"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Customer_Dim backup\customer dim backup"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="customer dim backup"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Customer_Dim]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1255</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Customer_Dim backup\customer dim backup.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.AvishayDB_DWH_backup]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.AvishayDB_DWH_backup]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Customer_Dim backup\customer dim backup.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Customer_Dim backup\customer dim backup.Inputs[OLE DB Destination Input].Columns[CustomerKey]"
+                      cachedDataType="i4"
+                      cachedName="CustomerKey"
+                      externalMetadataColumnId="Package\Customer_Dim backup\customer dim backup.Inputs[OLE DB Destination Input].ExternalColumns[CustomerKey]"
+                      lineageId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Output].Columns[CustomerKey]" />
+                    <inputColumn
+                      refId="Package\Customer_Dim backup\customer dim backup.Inputs[OLE DB Destination Input].Columns[CustomerID]"
+                      cachedCodepage="1255"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\Customer_Dim backup\customer dim backup.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                      lineageId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Output].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\Customer_Dim backup\customer dim backup.Inputs[OLE DB Destination Input].Columns[CustomerName]"
+                      cachedCodepage="1255"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CustomerName"
+                      externalMetadataColumnId="Package\Customer_Dim backup\customer dim backup.Inputs[OLE DB Destination Input].ExternalColumns[CustomerName]"
+                      lineageId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Output].Columns[CustomerName]" />
+                    <inputColumn
+                      refId="Package\Customer_Dim backup\customer dim backup.Inputs[OLE DB Destination Input].Columns[CustomerZip]"
+                      cachedDataType="i4"
+                      cachedName="CustomerZip"
+                      externalMetadataColumnId="Package\Customer_Dim backup\customer dim backup.Inputs[OLE DB Destination Input].ExternalColumns[CustomerZip]"
+                      lineageId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Output].Columns[CustomerZip]" />
+                    <inputColumn
+                      refId="Package\Customer_Dim backup\customer dim backup.Inputs[OLE DB Destination Input].Columns[time]"
+                      cachedDataType="date"
+                      cachedName="time"
+                      externalMetadataColumnId="Package\Customer_Dim backup\customer dim backup.Inputs[OLE DB Destination Input].ExternalColumns[time]"
+                      lineageId="Package\Customer_Dim backup\Derived Column.Outputs[Derived Column Output].Columns[time]" />
+                    <inputColumn
+                      refId="Package\Customer_Dim backup\customer dim backup.Inputs[OLE DB Destination Input].Columns[packagname]"
+                      cachedDataType="wstr"
+                      cachedLength="27"
+                      cachedName="packagname"
+                      externalMetadataColumnId="Package\Customer_Dim backup\customer dim backup.Inputs[OLE DB Destination Input].ExternalColumns[packagname]"
+                      lineageId="Package\Customer_Dim backup\Derived Column.Outputs[Derived Column Output].Columns[packagname]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Customer_Dim backup\customer dim backup.Inputs[OLE DB Destination Input].ExternalColumns[CustomerKey]"
+                      dataType="i4"
+                      name="CustomerKey" />
+                    <externalMetadataColumn
+                      refId="Package\Customer_Dim backup\customer dim backup.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                      codePage="1255"
+                      dataType="str"
+                      length="50"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\Customer_Dim backup\customer dim backup.Inputs[OLE DB Destination Input].ExternalColumns[CustomerName]"
+                      codePage="1255"
+                      dataType="str"
+                      length="50"
+                      name="CustomerName" />
+                    <externalMetadataColumn
+                      refId="Package\Customer_Dim backup\customer dim backup.Inputs[OLE DB Destination Input].ExternalColumns[CustomerZip]"
+                      dataType="i4"
+                      name="CustomerZip" />
+                    <externalMetadataColumn
+                      refId="Package\Customer_Dim backup\customer dim backup.Inputs[OLE DB Destination Input].ExternalColumns[time]"
+                      dataType="dbTimeStamp"
+                      name="time" />
+                    <externalMetadataColumn
+                      refId="Package\Customer_Dim backup\customer dim backup.Inputs[OLE DB Destination Input].ExternalColumns[packagname]"
+                      dataType="wstr"
+                      length="50"
+                      name="packagname" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Customer_Dim backup\customer dim backup.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Customer_Dim backup\customer dim backup.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Customer_Dim backup\customer dim backup.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Customer_Dim backup\customer dim backup.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Customer_Dim backup\customer dim backup.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Customer_Dim backup\customer dim backup.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Customer_Dim backup\Customer_Dim"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Customer_Dim"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Customer_Dim]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1255</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Customer_Dim backup\Customer_Dim.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.AvishayDB_DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.AvishayDB_DWH]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Output].Columns[CustomerKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Output].ExternalColumns[CustomerKey]"
+                      lineageId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Output].Columns[CustomerKey]"
+                      name="CustomerKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                      codePage="1255"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                      length="50"
+                      lineageId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                      name="CustomerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Output].Columns[CustomerName]"
+                      codePage="1255"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Output].ExternalColumns[CustomerName]"
+                      length="50"
+                      lineageId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Output].Columns[CustomerName]"
+                      name="CustomerName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Output].Columns[CustomerZip]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Output].ExternalColumns[CustomerZip]"
+                      lineageId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Output].Columns[CustomerZip]"
+                      name="CustomerZip"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Output].ExternalColumns[CustomerKey]"
+                      dataType="i4"
+                      name="CustomerKey" />
+                    <externalMetadataColumn
+                      refId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                      codePage="1255"
+                      dataType="str"
+                      length="50"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Output].ExternalColumns[CustomerName]"
+                      codePage="1255"
+                      dataType="str"
+                      length="50"
+                      name="CustomerName" />
+                    <externalMetadataColumn
+                      refId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Output].ExternalColumns[CustomerZip]"
+                      dataType="i4"
+                      name="CustomerZip" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Error Output].Columns[CustomerKey]"
+                      dataType="i4"
+                      lineageId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Error Output].Columns[CustomerKey]"
+                      name="CustomerKey" />
+                    <outputColumn
+                      refId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                      codePage="1255"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                      name="CustomerID" />
+                    <outputColumn
+                      refId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Error Output].Columns[CustomerName]"
+                      codePage="1255"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Error Output].Columns[CustomerName]"
+                      name="CustomerName" />
+                    <outputColumn
+                      refId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Error Output].Columns[CustomerZip]"
+                      dataType="i4"
+                      lineageId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Error Output].Columns[CustomerZip]"
+                      name="CustomerZip" />
+                    <outputColumn
+                      refId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Customer_Dim backup\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Customer_Dim backup\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Customer_Dim backup\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Customer_Dim backup\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Customer_Dim backup\Derived Column.Outputs[Derived Column Output].Columns[packagname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="27"
+                      lineageId="Package\Customer_Dim backup\Derived Column.Outputs[Derived Column Output].Columns[packagname]"
+                      name="packagname"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[System::PackageName] + @[System::TaskName]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[System::PackageName] + @[System::TaskName]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Customer_Dim backup\Derived Column.Outputs[Derived Column Output].Columns[time]"
+                      dataType="date"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Customer_Dim backup\Derived Column.Outputs[Derived Column Output].Columns[time]"
+                      name="time"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[System::StartTime]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[System::StartTime]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Customer_Dim backup\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Customer_Dim backup\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Customer_Dim backup\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Customer_Dim backup\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Customer_Dim backup\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Customer_Dim backup\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Customer_Dim backup.Paths[Derived Column Output]"
+              endId="Package\Customer_Dim backup\customer dim backup.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Customer_Dim backup\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Customer_Dim backup.Paths[OLE DB Source Output]"
+              endId="Package\Customer_Dim backup\Derived Column.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Customer_Dim backup\Customer_Dim.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\product dim backup"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{3DB06A8A-046F-43BB-9C3C-AA77140244A9}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="product dim backup"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\product dim backup\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\product dim backup\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\product dim backup\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\product dim backup\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\product dim backup\Derived Column.Outputs[Derived Column Output].Columns[packagname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="26"
+                      lineageId="Package\product dim backup\Derived Column.Outputs[Derived Column Output].Columns[packagname]"
+                      name="packagname"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[System::PackageName] + @[System::TaskName]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[System::PackageName] + @[System::TaskName]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\product dim backup\Derived Column.Outputs[Derived Column Output].Columns[time]"
+                      dataType="date"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\product dim backup\Derived Column.Outputs[Derived Column Output].Columns[time]"
+                      name="time"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[System::StartTime]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[System::StartTime]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\product dim backup\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\product dim backup\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\product dim backup\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\product dim backup\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\product dim backup\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\product dim backup\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\product dim backup\Products_dim"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Products_dim"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Products_dim]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1255</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\product dim backup\Products_dim.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.AvishayDB_DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.AvishayDB_DWH]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output].Columns[ProductKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output].ExternalColumns[ProductKey]"
+                      lineageId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output].Columns[ProductKey]"
+                      name="ProductKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output].Columns[ProductId]"
+                      codePage="1255"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output].ExternalColumns[ProductId]"
+                      length="50"
+                      lineageId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output].Columns[ProductId]"
+                      name="ProductId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output].Columns[ProductName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
+                      length="30"
+                      lineageId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output].Columns[ProductName]"
+                      name="ProductName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output].Columns[ProductPrice]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output].ExternalColumns[ProductPrice]"
+                      lineageId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output].Columns[ProductPrice]"
+                      name="ProductPrice"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output].Columns[VendorId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output].ExternalColumns[VendorId]"
+                      length="10"
+                      lineageId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output].Columns[VendorId]"
+                      name="VendorId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output].Columns[CategoryID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output].ExternalColumns[CategoryID]"
+                      length="10"
+                      lineageId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output].Columns[CategoryID]"
+                      name="CategoryID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output].ExternalColumns[ProductKey]"
+                      dataType="i4"
+                      name="ProductKey" />
+                    <externalMetadataColumn
+                      refId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output].ExternalColumns[ProductId]"
+                      codePage="1255"
+                      dataType="str"
+                      length="50"
+                      name="ProductId" />
+                    <externalMetadataColumn
+                      refId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
+                      dataType="wstr"
+                      length="30"
+                      name="ProductName" />
+                    <externalMetadataColumn
+                      refId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output].ExternalColumns[ProductPrice]"
+                      dataType="i4"
+                      name="ProductPrice" />
+                    <externalMetadataColumn
+                      refId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output].ExternalColumns[VendorId]"
+                      dataType="wstr"
+                      length="10"
+                      name="VendorId" />
+                    <externalMetadataColumn
+                      refId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output].ExternalColumns[CategoryID]"
+                      dataType="wstr"
+                      length="10"
+                      name="CategoryID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Error Output].Columns[ProductKey]"
+                      dataType="i4"
+                      lineageId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Error Output].Columns[ProductKey]"
+                      name="ProductKey" />
+                    <outputColumn
+                      refId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Error Output].Columns[ProductId]"
+                      codePage="1255"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Error Output].Columns[ProductId]"
+                      name="ProductId" />
+                    <outputColumn
+                      refId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Error Output].Columns[ProductName]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Error Output].Columns[ProductName]"
+                      name="ProductName" />
+                    <outputColumn
+                      refId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Error Output].Columns[ProductPrice]"
+                      dataType="i4"
+                      lineageId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Error Output].Columns[ProductPrice]"
+                      name="ProductPrice" />
+                    <outputColumn
+                      refId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Error Output].Columns[VendorId]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Error Output].Columns[VendorId]"
+                      name="VendorId" />
+                    <outputColumn
+                      refId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Error Output].Columns[CategoryID]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Error Output].Columns[CategoryID]"
+                      name="CategoryID" />
+                    <outputColumn
+                      refId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\product dim backup\Products_dim backip"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Products_dim backip"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Products_dim]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1255</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\product dim backup\Products_dim backip.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.AvishayDB_DWH_backup]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.AvishayDB_DWH_backup]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\product dim backup\Products_dim backip.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\product dim backup\Products_dim backip.Inputs[OLE DB Destination Input].Columns[ProductKey]"
+                      cachedDataType="i4"
+                      cachedName="ProductKey"
+                      externalMetadataColumnId="Package\product dim backup\Products_dim backip.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
+                      lineageId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output].Columns[ProductKey]" />
+                    <inputColumn
+                      refId="Package\product dim backup\Products_dim backip.Inputs[OLE DB Destination Input].Columns[ProductId]"
+                      cachedCodepage="1255"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ProductId"
+                      externalMetadataColumnId="Package\product dim backup\Products_dim backip.Inputs[OLE DB Destination Input].ExternalColumns[ProductId]"
+                      lineageId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output].Columns[ProductId]" />
+                    <inputColumn
+                      refId="Package\product dim backup\Products_dim backip.Inputs[OLE DB Destination Input].Columns[ProductName]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="ProductName"
+                      externalMetadataColumnId="Package\product dim backup\Products_dim backip.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                      lineageId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output].Columns[ProductName]" />
+                    <inputColumn
+                      refId="Package\product dim backup\Products_dim backip.Inputs[OLE DB Destination Input].Columns[ProductPrice]"
+                      cachedDataType="i4"
+                      cachedName="ProductPrice"
+                      externalMetadataColumnId="Package\product dim backup\Products_dim backip.Inputs[OLE DB Destination Input].ExternalColumns[ProductPrice]"
+                      lineageId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output].Columns[ProductPrice]" />
+                    <inputColumn
+                      refId="Package\product dim backup\Products_dim backip.Inputs[OLE DB Destination Input].Columns[VendorId]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="VendorId"
+                      externalMetadataColumnId="Package\product dim backup\Products_dim backip.Inputs[OLE DB Destination Input].ExternalColumns[VendorId]"
+                      lineageId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output].Columns[VendorId]" />
+                    <inputColumn
+                      refId="Package\product dim backup\Products_dim backip.Inputs[OLE DB Destination Input].Columns[CategoryID]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="CategoryID"
+                      externalMetadataColumnId="Package\product dim backup\Products_dim backip.Inputs[OLE DB Destination Input].ExternalColumns[CategoryID]"
+                      lineageId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output].Columns[CategoryID]" />
+                    <inputColumn
+                      refId="Package\product dim backup\Products_dim backip.Inputs[OLE DB Destination Input].Columns[packagname]"
+                      cachedDataType="wstr"
+                      cachedLength="26"
+                      cachedName="packagname"
+                      externalMetadataColumnId="Package\product dim backup\Products_dim backip.Inputs[OLE DB Destination Input].ExternalColumns[packagname]"
+                      lineageId="Package\product dim backup\Derived Column.Outputs[Derived Column Output].Columns[packagname]" />
+                    <inputColumn
+                      refId="Package\product dim backup\Products_dim backip.Inputs[OLE DB Destination Input].Columns[time]"
+                      cachedDataType="date"
+                      cachedName="time"
+                      externalMetadataColumnId="Package\product dim backup\Products_dim backip.Inputs[OLE DB Destination Input].ExternalColumns[time]"
+                      lineageId="Package\product dim backup\Derived Column.Outputs[Derived Column Output].Columns[time]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\product dim backup\Products_dim backip.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
+                      dataType="i4"
+                      name="ProductKey" />
+                    <externalMetadataColumn
+                      refId="Package\product dim backup\Products_dim backip.Inputs[OLE DB Destination Input].ExternalColumns[ProductId]"
+                      codePage="1255"
+                      dataType="str"
+                      length="50"
+                      name="ProductId" />
+                    <externalMetadataColumn
+                      refId="Package\product dim backup\Products_dim backip.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                      dataType="wstr"
+                      length="30"
+                      name="ProductName" />
+                    <externalMetadataColumn
+                      refId="Package\product dim backup\Products_dim backip.Inputs[OLE DB Destination Input].ExternalColumns[ProductPrice]"
+                      dataType="i4"
+                      name="ProductPrice" />
+                    <externalMetadataColumn
+                      refId="Package\product dim backup\Products_dim backip.Inputs[OLE DB Destination Input].ExternalColumns[VendorId]"
+                      dataType="wstr"
+                      length="10"
+                      name="VendorId" />
+                    <externalMetadataColumn
+                      refId="Package\product dim backup\Products_dim backip.Inputs[OLE DB Destination Input].ExternalColumns[CategoryID]"
+                      dataType="wstr"
+                      length="10"
+                      name="CategoryID" />
+                    <externalMetadataColumn
+                      refId="Package\product dim backup\Products_dim backip.Inputs[OLE DB Destination Input].ExternalColumns[packagname]"
+                      dataType="wstr"
+                      length="50"
+                      name="packagname" />
+                    <externalMetadataColumn
+                      refId="Package\product dim backup\Products_dim backip.Inputs[OLE DB Destination Input].ExternalColumns[time]"
+                      dataType="dbTimeStamp"
+                      name="time" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\product dim backup\Products_dim backip.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\product dim backup\Products_dim backip.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\product dim backup\Products_dim backip.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\product dim backup\Products_dim backip.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\product dim backup\Products_dim backip.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\product dim backup\Products_dim backip.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\product dim backup.Paths[Derived Column Output]"
+              endId="Package\product dim backup\Products_dim backip.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\product dim backup\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\product dim backup.Paths[OLE DB Source Output]"
+              endId="Package\product dim backup\Derived Column.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\product dim backup\Products_dim.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Sales_Fact_table backup"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5613A977-002B-42FE-805C-09F61D830CC1}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sales_Fact_table backup"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Sales_Fact_table backup\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Sales_Fact_table backup\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Sales_Fact_table backup\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Sales_Fact_table backup\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales_Fact_table backup\Derived Column.Outputs[Derived Column Output].Columns[packagname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="31"
+                      lineageId="Package\Sales_Fact_table backup\Derived Column.Outputs[Derived Column Output].Columns[packagname]"
+                      name="packagname"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[System::PackageName] + @[System::TaskName]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[System::PackageName] + @[System::TaskName]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Sales_Fact_table backup\Derived Column.Outputs[Derived Column Output].Columns[time]"
+                      dataType="date"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Sales_Fact_table backup\Derived Column.Outputs[Derived Column Output].Columns[time]"
+                      name="time"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[System::StartTime]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[System::StartTime]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Sales_Fact_table backup\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Sales_Fact_table backup\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales_Fact_table backup\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Sales_Fact_table backup\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Sales_Fact_table backup\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Sales_Fact_table backup\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Sales_Fact_table backup\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Sales_Fact_table]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1255</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Sales_Fact_table backup\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.AvishayDB_DWH_backup]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.AvishayDB_DWH_backup]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Sales_Fact_table backup\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CustomerKey]"
+                      cachedDataType="i4"
+                      cachedName="CustomerKey"
+                      externalMetadataColumnId="Package\Sales_Fact_table backup\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerKey]"
+                      lineageId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output].Columns[CustomerKey]" />
+                    <inputColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ProductKey]"
+                      cachedDataType="i4"
+                      cachedName="ProductKey"
+                      externalMetadataColumnId="Package\Sales_Fact_table backup\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
+                      lineageId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductKey]" />
+                    <inputColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CalenderKey]"
+                      cachedDataType="i4"
+                      cachedName="CalenderKey"
+                      externalMetadataColumnId="Package\Sales_Fact_table backup\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CalenderKey]"
+                      lineageId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output].Columns[CalenderKey]" />
+                    <inputColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StoreKey]"
+                      cachedDataType="i4"
+                      cachedName="StoreKey"
+                      externalMetadataColumnId="Package\Sales_Fact_table backup\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StoreKey]"
+                      lineageId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoreKey]" />
+                    <inputColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Shekelsold]"
+                      cachedDataType="i4"
+                      cachedName="Shekelsold"
+                      externalMetadataColumnId="Package\Sales_Fact_table backup\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Shekelsold]"
+                      lineageId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output].Columns[Shekelsold]" />
+                    <inputColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Quantity]"
+                      cachedDataType="i4"
+                      cachedName="Quantity"
+                      externalMetadataColumnId="Package\Sales_Fact_table backup\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
+                      lineageId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output].Columns[Quantity]" />
+                    <inputColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[packagname]"
+                      cachedDataType="wstr"
+                      cachedLength="31"
+                      cachedName="packagname"
+                      externalMetadataColumnId="Package\Sales_Fact_table backup\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[packagname]"
+                      lineageId="Package\Sales_Fact_table backup\Derived Column.Outputs[Derived Column Output].Columns[packagname]" />
+                    <inputColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[time]"
+                      cachedDataType="date"
+                      cachedName="time"
+                      externalMetadataColumnId="Package\Sales_Fact_table backup\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[time]"
+                      lineageId="Package\Sales_Fact_table backup\Derived Column.Outputs[Derived Column Output].Columns[time]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerKey]"
+                      dataType="i4"
+                      name="CustomerKey" />
+                    <externalMetadataColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
+                      dataType="i4"
+                      name="ProductKey" />
+                    <externalMetadataColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CalenderKey]"
+                      dataType="i4"
+                      name="CalenderKey" />
+                    <externalMetadataColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StoreKey]"
+                      dataType="i4"
+                      name="StoreKey" />
+                    <externalMetadataColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Shekelsold]"
+                      dataType="i4"
+                      name="Shekelsold" />
+                    <externalMetadataColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
+                      dataType="i4"
+                      name="Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[packagname]"
+                      dataType="wstr"
+                      length="50"
+                      name="packagname" />
+                    <externalMetadataColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[time]"
+                      dataType="dbTimeStamp"
+                      name="time" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Sales_Fact_table backup\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Sales_Fact_table backup\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Sales_Fact_table backup\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Sales_Fact_table backup\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Sales_Fact_table backup\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Sales_Fact_table]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1255</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Sales_Fact_table backup\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.AvishayDB_DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.AvishayDB_DWH]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output].Columns[CustomerKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CustomerKey]"
+                      lineageId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output].Columns[CustomerKey]"
+                      name="CustomerKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProductKey]"
+                      lineageId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductKey]"
+                      name="ProductKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output].Columns[CalenderKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CalenderKey]"
+                      lineageId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output].Columns[CalenderKey]"
+                      name="CalenderKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoreKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StoreKey]"
+                      lineageId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoreKey]"
+                      name="StoreKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output].Columns[Shekelsold]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Shekelsold]"
+                      lineageId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output].Columns[Shekelsold]"
+                      name="Shekelsold"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output].Columns[Quantity]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                      lineageId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output].Columns[Quantity]"
+                      name="Quantity"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CustomerKey]"
+                      dataType="i4"
+                      name="CustomerKey" />
+                    <externalMetadataColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProductKey]"
+                      dataType="i4"
+                      name="ProductKey" />
+                    <externalMetadataColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CalenderKey]"
+                      dataType="i4"
+                      name="CalenderKey" />
+                    <externalMetadataColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StoreKey]"
+                      dataType="i4"
+                      name="StoreKey" />
+                    <externalMetadataColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Shekelsold]"
+                      dataType="i4"
+                      name="Shekelsold" />
+                    <externalMetadataColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                      dataType="i4"
+                      name="Quantity" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CustomerKey]"
+                      dataType="i4"
+                      lineageId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CustomerKey]"
+                      name="CustomerKey" />
+                    <outputColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProductKey]"
+                      dataType="i4"
+                      lineageId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProductKey]"
+                      name="ProductKey" />
+                    <outputColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CalenderKey]"
+                      dataType="i4"
+                      lineageId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CalenderKey]"
+                      name="CalenderKey" />
+                    <outputColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StoreKey]"
+                      dataType="i4"
+                      lineageId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StoreKey]"
+                      name="StoreKey" />
+                    <outputColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Shekelsold]"
+                      dataType="i4"
+                      lineageId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Shekelsold]"
+                      name="Shekelsold" />
+                    <outputColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Quantity]"
+                      dataType="i4"
+                      lineageId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Quantity]"
+                      name="Quantity" />
+                    <outputColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Sales_Fact_table backup.Paths[Derived Column Output]"
+              endId="Package\Sales_Fact_table backup\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Sales_Fact_table backup\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Sales_Fact_table backup.Paths[OLE DB Source Output]"
+              endId="Package\Sales_Fact_table backup\Derived Column.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Sales_Fact_table backup\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Stores_Dim"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{49487F53-2BF5-4DD5-A322-C73F560FAD7E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Stores_Dim"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Stores_Dim\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Stores_Dim\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Stores_Dim\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Stores_Dim\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Stores_Dim\Derived Column.Outputs[Derived Column Output].Columns[packagname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="18"
+                      lineageId="Package\Stores_Dim\Derived Column.Outputs[Derived Column Output].Columns[packagname]"
+                      name="packagname"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[System::PackageName] + @[System::TaskName]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[System::PackageName] + @[System::TaskName]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Stores_Dim\Derived Column.Outputs[Derived Column Output].Columns[time]"
+                      dataType="date"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Stores_Dim\Derived Column.Outputs[Derived Column Output].Columns[time]"
+                      name="time"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[System::StartTime]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[System::StartTime]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Stores_Dim\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Stores_Dim\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Stores_Dim\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Stores_Dim\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Stores_Dim\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Stores_Dim\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Stores_Dim\Stores_Dim"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Stores_Dim"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Stores_Dim]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1255</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Stores_Dim\Stores_Dim.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.AvishayDB_DWH]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.AvishayDB_DWH]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Output].Columns[StoreKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Output].ExternalColumns[StoreKey]"
+                      lineageId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Output].Columns[StoreKey]"
+                      name="StoreKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Output].Columns[StoreID]"
+                      codePage="1255"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Output].ExternalColumns[StoreID]"
+                      length="50"
+                      lineageId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Output].Columns[StoreID]"
+                      name="StoreID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Output].Columns[StoreZIP]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Output].ExternalColumns[StoreZIP]"
+                      lineageId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Output].Columns[StoreZIP]"
+                      name="StoreZIP"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Output].Columns[StoreRegionName]"
+                      codePage="1255"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Output].ExternalColumns[StoreRegionName]"
+                      length="50"
+                      lineageId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Output].Columns[StoreRegionName]"
+                      name="StoreRegionName"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Output].ExternalColumns[StoreKey]"
+                      dataType="i4"
+                      name="StoreKey" />
+                    <externalMetadataColumn
+                      refId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Output].ExternalColumns[StoreID]"
+                      codePage="1255"
+                      dataType="str"
+                      length="50"
+                      name="StoreID" />
+                    <externalMetadataColumn
+                      refId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Output].ExternalColumns[StoreZIP]"
+                      dataType="i4"
+                      name="StoreZIP" />
+                    <externalMetadataColumn
+                      refId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Output].ExternalColumns[StoreRegionName]"
+                      codePage="1255"
+                      dataType="str"
+                      length="50"
+                      name="StoreRegionName" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Error Output].Columns[StoreKey]"
+                      dataType="i4"
+                      lineageId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Error Output].Columns[StoreKey]"
+                      name="StoreKey" />
+                    <outputColumn
+                      refId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Error Output].Columns[StoreID]"
+                      codePage="1255"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Error Output].Columns[StoreID]"
+                      name="StoreID" />
+                    <outputColumn
+                      refId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Error Output].Columns[StoreZIP]"
+                      dataType="i4"
+                      lineageId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Error Output].Columns[StoreZIP]"
+                      name="StoreZIP" />
+                    <outputColumn
+                      refId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Error Output].Columns[StoreRegionName]"
+                      codePage="1255"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Error Output].Columns[StoreRegionName]"
+                      name="StoreRegionName" />
+                    <outputColumn
+                      refId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Stores_Dim\Stores_Dim backup"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Stores_Dim backup"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Stores_Dim]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1255</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Stores_Dim\Stores_Dim backup.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.AvishayDB_DWH_backup]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.AvishayDB_DWH_backup]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Stores_Dim\Stores_Dim backup.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Stores_Dim\Stores_Dim backup.Inputs[OLE DB Destination Input].Columns[StoreKey]"
+                      cachedDataType="i4"
+                      cachedName="StoreKey"
+                      externalMetadataColumnId="Package\Stores_Dim\Stores_Dim backup.Inputs[OLE DB Destination Input].ExternalColumns[StoreKey]"
+                      lineageId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Output].Columns[StoreKey]" />
+                    <inputColumn
+                      refId="Package\Stores_Dim\Stores_Dim backup.Inputs[OLE DB Destination Input].Columns[StoreID]"
+                      cachedCodepage="1255"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StoreID"
+                      externalMetadataColumnId="Package\Stores_Dim\Stores_Dim backup.Inputs[OLE DB Destination Input].ExternalColumns[StoreID]"
+                      lineageId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Output].Columns[StoreID]" />
+                    <inputColumn
+                      refId="Package\Stores_Dim\Stores_Dim backup.Inputs[OLE DB Destination Input].Columns[StoreZIP]"
+                      cachedDataType="i4"
+                      cachedName="StoreZIP"
+                      externalMetadataColumnId="Package\Stores_Dim\Stores_Dim backup.Inputs[OLE DB Destination Input].ExternalColumns[StoreZIP]"
+                      lineageId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Output].Columns[StoreZIP]" />
+                    <inputColumn
+                      refId="Package\Stores_Dim\Stores_Dim backup.Inputs[OLE DB Destination Input].Columns[StoreRegionName]"
+                      cachedCodepage="1255"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StoreRegionName"
+                      externalMetadataColumnId="Package\Stores_Dim\Stores_Dim backup.Inputs[OLE DB Destination Input].ExternalColumns[StoreRegionName]"
+                      lineageId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Output].Columns[StoreRegionName]" />
+                    <inputColumn
+                      refId="Package\Stores_Dim\Stores_Dim backup.Inputs[OLE DB Destination Input].Columns[packagname]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="packagname"
+                      externalMetadataColumnId="Package\Stores_Dim\Stores_Dim backup.Inputs[OLE DB Destination Input].ExternalColumns[packagname]"
+                      lineageId="Package\Stores_Dim\Derived Column.Outputs[Derived Column Output].Columns[packagname]" />
+                    <inputColumn
+                      refId="Package\Stores_Dim\Stores_Dim backup.Inputs[OLE DB Destination Input].Columns[time]"
+                      cachedDataType="date"
+                      cachedName="time"
+                      externalMetadataColumnId="Package\Stores_Dim\Stores_Dim backup.Inputs[OLE DB Destination Input].ExternalColumns[time]"
+                      lineageId="Package\Stores_Dim\Derived Column.Outputs[Derived Column Output].Columns[time]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Stores_Dim\Stores_Dim backup.Inputs[OLE DB Destination Input].ExternalColumns[StoreKey]"
+                      dataType="i4"
+                      name="StoreKey" />
+                    <externalMetadataColumn
+                      refId="Package\Stores_Dim\Stores_Dim backup.Inputs[OLE DB Destination Input].ExternalColumns[StoreID]"
+                      codePage="1255"
+                      dataType="str"
+                      length="50"
+                      name="StoreID" />
+                    <externalMetadataColumn
+                      refId="Package\Stores_Dim\Stores_Dim backup.Inputs[OLE DB Destination Input].ExternalColumns[StoreZIP]"
+                      dataType="i4"
+                      name="StoreZIP" />
+                    <externalMetadataColumn
+                      refId="Package\Stores_Dim\Stores_Dim backup.Inputs[OLE DB Destination Input].ExternalColumns[StoreRegionName]"
+                      codePage="1255"
+                      dataType="str"
+                      length="50"
+                      name="StoreRegionName" />
+                    <externalMetadataColumn
+                      refId="Package\Stores_Dim\Stores_Dim backup.Inputs[OLE DB Destination Input].ExternalColumns[packagname]"
+                      dataType="wstr"
+                      length="50"
+                      name="packagname" />
+                    <externalMetadataColumn
+                      refId="Package\Stores_Dim\Stores_Dim backup.Inputs[OLE DB Destination Input].ExternalColumns[time]"
+                      dataType="dbTimeStamp"
+                      name="time" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Stores_Dim\Stores_Dim backup.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Stores_Dim\Stores_Dim backup.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Stores_Dim\Stores_Dim backup.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Stores_Dim\Stores_Dim backup.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Stores_Dim\Stores_Dim backup.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Stores_Dim\Stores_Dim backup.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Stores_Dim.Paths[Derived Column Output]"
+              endId="Package\Stores_Dim\Stores_Dim backup.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Stores_Dim\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Stores_Dim.Paths[OLE DB Source Output]"
+              endId="Package\Stores_Dim\Derived Column.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Stores_Dim\Stores_Dim.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="177.333333333334,42.6666666666667"
+          Id="Package\calender dim backup"
+          TopLeft="151.249997746199,100.099998210073" />
+        <NodeLayout
+          Size="185.333333333334,42.6666666666667"
+          Id="Package\Customer_Dim backup"
+          TopLeft="151.249997746199,176.79999683857" />
+        <NodeLayout
+          Size="173.333333333334,42.6666666666667"
+          Id="Package\product dim backup"
+          TopLeft="153.749997708946,245.699995606542" />
+        <NodeLayout
+          Size="196,42.6666666666667"
+          Id="Package\Sales_Fact_table backup"
+          TopLeft="146.249997820705,308.74999447912" />
+        <NodeLayout
+          Size="133.333333333334,42.6666666666667"
+          Id="Package\Stores_Dim"
+          TopLeft="169.374997476116,383.799993816614" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\calender dim backup">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="120,42.6666666666667"
+          Id="Package\calender dim backup\calender"
+          TopLeft="188.124997196719,77.9999986052513" />
+        <NodeLayout
+          Size="164,42.6666666666667"
+          Id="Package\calender dim backup\Derived Column 1"
+          TopLeft="181.874997289852,173.099997977614" />
+        <NodeLayout
+          Size="140,42.6666666666667"
+          Id="Package\calender dim backup\calender dim"
+          TopLeft="194.374997103587,257.399995397329" />
+        <EdgeLayout
+          Id="Package\calender dim backup.Paths[Derived Column Output]"
+          TopLeft="264.124997196719,215.766664644281">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.6333307530481"
+              Start="0,0"
+              End="0,34.1333307530481">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.1333307530481" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\calender dim backup.Paths[OLE DB Source Output]"
+          TopLeft="248.124997196719,120.666665271918">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="15.7500000931324,52.4333327056964"
+              Start="0,0"
+              End="15.7500000931324,44.9333327056964">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.2166663528482" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.2166663528482"
+                    Point2="0,26.2166663528482"
+                    Point3="4,26.2166663528482" />
+                  <mssgle:LineSegment
+                    End="11.7500000931324,26.2166663528482" />
+                  <mssgle:CubicBezierSegment
+                    Point1="11.7500000931324,26.2166663528482"
+                    Point2="15.7500000931324,26.2166663528482"
+                    Point3="15.7500000931324,30.2166663528482" />
+                  <mssgle:LineSegment
+                    End="15.7500000931324,44.9333327056964" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\calender dim backup\calender">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\calender dim backup\calender dim">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Customer_Dim backup">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="149.333333333334,42.6666666666667"
+          Id="Package\Customer_Dim backup\Customer_Dim"
+          TopLeft="89.8214284782963,59.2857142857143" />
+        <NodeLayout
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\Customer_Dim backup\Derived Column"
+          TopLeft="95.952380952381,148.571428571429" />
+        <EdgeLayout
+          Id="Package\Customer_Dim backup.Paths[OLE DB Source Output]"
+          TopLeft="164.488095144963,101.952380952381">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.79761914075141,46.6190476190476"
+              Start="0,0"
+              End="8.79761914075141,39.1190476190476">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.3095238095238" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.3095238095238"
+                    Point2="0,23.3095238095238"
+                    Point3="4,23.3095238095238" />
+                  <mssgle:LineSegment
+                    End="4.79761914075141,23.3095238095238" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.79761914075141,23.3095238095238"
+                    Point2="8.79761914075141,23.3095238095238"
+                    Point3="8.79761914075141,27.3095238095238" />
+                  <mssgle:LineSegment
+                    End="8.79761914075141,39.1190476190476" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="180,42.6666666666667"
+          Id="Package\Customer_Dim backup\customer dim backup"
+          TopLeft="106.666666666667,246.428571428571" />
+        <EdgeLayout
+          Id="Package\Customer_Dim backup.Paths[Derived Column Output]"
+          TopLeft="173.285714285714,191.238095238095">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="23.3809523809524,55.1904761904762"
+              Start="0,0"
+              End="23.3809523809524,47.6904761904762">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5952380952381" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.5952380952381"
+                    Point2="0,27.5952380952381"
+                    Point3="4,27.5952380952381" />
+                  <mssgle:LineSegment
+                    End="19.3809523809524,27.5952380952381" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19.3809523809524,27.5952380952381"
+                    Point2="23.3809523809524,27.5952380952381"
+                    Point3="23.3809523809524,31.5952380952381" />
+                  <mssgle:LineSegment
+                    End="23.3809523809524,47.6904761904762" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Customer_Dim backup\Customer_Dim">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Customer_Dim backup\customer dim backup">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\product dim backup">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="144,42.6666666666667"
+          Id="Package\product dim backup\Products_dim"
+          TopLeft="303,116.666666666667" />
+        <NodeLayout
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\product dim backup\Derived Column"
+          TopLeft="317,232.666666666667" />
+        <EdgeLayout
+          Id="Package\product dim backup.Paths[OLE DB Source Output]"
+          TopLeft="375,159.333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="19.3333333333333,73.3333333333333"
+              Start="0,0"
+              End="19.3333333333333,65.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.6666666666667" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.6666666666667"
+                    Point2="0,36.6666666666667"
+                    Point3="4,36.6666666666667" />
+                  <mssgle:LineSegment
+                    End="15.3333333333333,36.6666666666667" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15.3333333333333,36.6666666666667"
+                    Point2="19.3333333333333,36.6666666666667"
+                    Point3="19.3333333333333,40.6666666666667" />
+                  <mssgle:LineSegment
+                    End="19.3333333333333,65.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="177.333333333334,42.6666666666667"
+          Id="Package\product dim backup\Products_dim backip"
+          TopLeft="334,348" />
+        <EdgeLayout
+          Id="Package\product dim backup.Paths[Derived Column Output]"
+          TopLeft="394.333333333333,275.333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="28.3333333333334,72.6666666666666"
+              Start="0,0"
+              End="28.3333333333334,65.1666666666666">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.3333333333333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.3333333333333"
+                    Point2="0,36.3333333333333"
+                    Point3="4,36.3333333333333" />
+                  <mssgle:LineSegment
+                    End="24.3333333333334,36.3333333333333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="24.3333333333334,36.3333333333333"
+                    Point2="28.3333333333334,36.3333333333333"
+                    Point3="28.3333333333334,40.3333333333333" />
+                  <mssgle:LineSegment
+                    End="28.3333333333334,65.1666666666666" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\product dim backup\Products_dim">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\product dim backup\Products_dim backip">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Sales_Fact_table backup">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\Sales_Fact_table backup\Derived Column"
+          TopLeft="258,206" />
+        <NodeLayout
+          Size="150.666666666667,42.6666666666667"
+          Id="Package\Sales_Fact_table backup\OLE DB Source"
+          TopLeft="246,117" />
+        <NodeLayout
+          Size="172,42.6666666666667"
+          Id="Package\Sales_Fact_table backup\OLE DB Destination"
+          TopLeft="259,289" />
+        <EdgeLayout
+          Id="Package\Sales_Fact_table backup.Paths[OLE DB Source Output]"
+          TopLeft="321.333333333333,159.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14,46.3333333333333"
+              Start="0,0"
+              End="14,38.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.1666666666667" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.1666666666667"
+                    Point2="0,23.1666666666667"
+                    Point3="4,23.1666666666667" />
+                  <mssgle:LineSegment
+                    End="10,23.1666666666667" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10,23.1666666666667"
+                    Point2="14,23.1666666666667"
+                    Point3="14,27.1666666666667" />
+                  <mssgle:LineSegment
+                    End="14,38.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sales_Fact_table backup.Paths[Derived Column Output]"
+          TopLeft="335.333333333333,248.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="9.66666666666669,40.3333333333333"
+              Start="0,0"
+              End="9.66666666666669,32.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.1666666666667" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.1666666666667"
+                    Point2="0,20.1666666666667"
+                    Point3="4,20.1666666666667" />
+                  <mssgle:LineSegment
+                    End="5.66666666666669,20.1666666666667" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5.66666666666669,20.1666666666667"
+                    Point2="9.66666666666669,20.1666666666667"
+                    Point3="9.66666666666669,24.1666666666667" />
+                  <mssgle:LineSegment
+                    End="9.66666666666669,32.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Stores_Dim">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\Stores_Dim\Derived Column"
+          TopLeft="201,228" />
+        <NodeLayout
+          Size="133.333333333334,42.6666666666667"
+          Id="Package\Stores_Dim\Stores_Dim"
+          TopLeft="204,128" />
+        <NodeLayout
+          Size="170.666666666667,42.6666666666667"
+          Id="Package\Stores_Dim\Stores_Dim backup"
+          TopLeft="191,336" />
+        <EdgeLayout
+          Id="Package\Stores_Dim.Paths[OLE DB Source Output]"
+          TopLeft="274.5,170.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57.3333333333333"
+              Start="0,0"
+              End="0,49.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Stores_Dim.Paths[Derived Column Output]"
+          TopLeft="277.333333333333,270.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65.3333333333333"
+              Start="0,0"
+              End="0,57.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sales_Fact_table backup\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sales_Fact_table backup\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Stores_Dim\Stores_Dim">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Stores_Dim\Stores_Dim backup">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.34601.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "SSIS_PROJECT_AVISHAY", "SSIS_PROJECT_AVISHAY.dtproj", "{C52D98E2-46A5-4263-B998-452380108FDB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C52D98E2-46A5-4263-B998-452380108FDB}.Development|Default.ActiveCfg = Development
+		{C52D98E2-46A5-4263-B998-452380108FDB}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9A742455-1C5E-4727-9860-9CC60C27275A}
+	EndGlobalSection
+EndGlobal
